@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Resultados - MedicalLab</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/51576/site/js/login.js" defer></script>
+
+    <!-- Estilos básicos para compatibilidade -->
+    <style>
+      .ie-panel { 
+        display: none; 
+        background: #212121; 
+        padding: 10px 0; 
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3); 
+        clear: both; 
+        text-align: center; 
+        position: relative; 
+        z-index: 1; 
+      }
+      html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { 
+        display: block; 
+      }
+      .section-lg {
+        padding: 50px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ie-panel">
+      <a href="http://windows.microsoft.com/en-US/internet-explorer/">
+        <img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="Você está usando um navegador desatualizado. Para uma experiência de navegação mais rápida e segura, faça upgrade gratuitamente hoje.">
+      </a>
+    </div>
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p>Carregando...</p>
+      </div>
+    </div>
+    <div class="page">
+      <!-- Cabeçalho com a navegação -->
+      <header class="section page-header rd-navbar-transparent-wrap">
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="20px" data-xl-stick-up-offset="20px" data-xxl-stick-up-offset="20px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+            <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main-inner">
+                <div class="rd-navbar-main">
+                  <div class="rd-navbar-panel">
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <div class="rd-navbar-brand">
+                      <a class="brand" href="index.html" style="display: inline-block; text-decoration: none;">
+                        <span style="font-size: 24px; font-weight: bold; color: #ffffff;">MedicalLab</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="rd-navbar-main-element">
+                    <div class="rd-navbar-nav-wrap">
+                      <ul class="rd-navbar-nav">
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Home</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">Sobre</a></li>
+                        <li class="rd-nav-item active"><a class="rd-nav-link" href="resultados.html">Resultados</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Seção de login futurista -->
+      <section class="futuristic-login-section">
+        <!-- Partículas flutuantes -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      
+        <div class="container">
+          <!-- Seção Esquerda -->
+          <div class="left-section">
+            <!-- Espaço para exibir uma tagline ou imagem de fundo futurista -->
+          </div>
+      
+          <!-- Seção Direita com o formulário -->
+          <div class="right-section">
+            <div class="form-section">
+              <h2>Entrar</h2>
+              <form class="form" id="login-form">
+                <select name="user-type" id="user-type">
+                  <option value="resident">Residente</option>
+                  <option value="tutor">Tutor</option>
+                </select>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit" id="auth-submit" class="btn btn-primary w-100">Entrar</button>
+                <a href="#" id="create-account">Não tem uma conta? Crie aqui</a>
+                <div id="auth-message" class="text-center text-danger mb-3"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Estilos com visual futurista, responsividade e ajustes para posicionamento -->
+      <style>
+        /* Estilização global */
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Lato', sans-serif;
+          background-color: #0d0d0d;
+          overflow-x: hidden;
+        }
+        
+        /* Ajuste para que o formulário fique abaixo do header */
+        .futuristic-login-section {
+          padding-top: 120px; /* Espaço para o header */
+          min-height: calc(100vh - 120px);
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: radial-gradient(circle at center, #1a1a1a, #000000);
+          overflow: hidden;
+        }
+        
+        /* Partículas animadas com variações de escala e opacidade */
+        .particle {
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          animation: floatParticle 8s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { top: 15%; left: 5%; animation-duration: 10s; }
+        .particle:nth-child(2) { top: 40%; left: 20%; animation-duration: 12s; }
+        .particle:nth-child(3) { top: 75%; left: 35%; animation-duration: 9s; }
+        .particle:nth-child(4) { top: 10%; right: 10%; animation-duration: 11s; }
+        .particle:nth-child(5) { top: 55%; right: 15%; animation-duration: 10s; }
+        .particle:nth-child(6) { bottom: 20%; left: 25%; animation-duration: 13s; }
+        .particle:nth-child(7) { bottom: 10%; right: 5%; animation-duration: 14s; }
+        .particle:nth-child(8) { top: 30%; right: 30%; animation-duration: 12s; }
+        .particle:nth-child(9) { bottom: 25%; left: 40%; animation-duration: 10s; }
+        
+        @keyframes floatParticle {
+          0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.7;
+          }
+          50% {
+            transform: translate(20px, -20px) scale(1.3);
+            opacity: 0.3;
+          }
+          100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.7;
+          }
+        }
+        
+        /* Container com efeito glassmorphism e borda neon animada */
+        .container {
+          width: 90%;
+          max-width: 900px;
+          height: 600px;
+          display: flex;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(15px);
+          border-radius: 20px;
+          box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+          overflow: hidden;
+          position: relative;
+          border: 2px solid transparent;
+          z-index: 2;
+        }
+        
+        .container::before {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg, #00d9ff, #ff00ff, #00d9ff, #ff00ff);
+          background-size: 400% 400%;
+          border-radius: 22px;
+          z-index: -1;
+          animation: neonGlow 8s ease infinite;
+        }
+        
+        @keyframes neonGlow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
+        /* Seção esquerda com imagem de fundo e sobreposição para efeito escuro */
+        .left-section {
+          flex: 1;
+          background: url('./images/young-doctor-wearing-vr-goggles-examining-mannequin-vr-simulation-future-technology-concept.jpg') no-repeat center center/cover;
+          position: relative;
+        }
+        
+        .left-section::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+        }
+        
+        /* Seção direita com fundo semitransparente */
+        .right-section {
+          flex: 1.2;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 40px;
+          background: rgba(20, 20, 20, 0.8);
+          position: relative;
+        }
+        
+        .form-section h2 {
+          font-size: 28px;
+          margin-bottom: 20px;
+          color: #00d9ff;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          text-shadow: 0 0 10px rgba(0,217,255,0.7);
+        }
+        
+        .form {
+          width: 100%;
+          max-width: 350px;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .form select,
+        .form input {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 12px 15px;
+          margin-bottom: 20px;
+          border-radius: 10px;
+          font-size: 14px;
+          color: #ffffff;
+          outline: none;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(5px);
+        }
+        
+        /* Estado de foco para select e input – com efeito neon e sombra para melhorar a legibilidade */
+        .form select:focus,
+        .form input:focus {
+          border-color: #00d9ff;
+          box-shadow: 0 0 8px rgba(0,217,255,0.8);
+        }
+        
+        /* Ajuste específico para o dropdown quando em foco */
+        select:focus {
+          animation: neon-border 0.9s linear infinite alternate;
+          background: linear-gradient(90deg, #3b5998, #6a89cc, #3b5998);
+          color: white;
+          text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+          outline: none;
+          box-shadow: 0 0 10px rgba(59, 89, 152, 0.8);
+        }
+        
+        /* Estilização das opções do dropdown para melhorar a legibilidade */
+        select option {
+          background: rgba(0, 0, 0, 0.9);
+          color: #ffffff;
+          padding: 12px;
+        }
+        
+        /* Botão do formulário */
+        .form button {
+          background: linear-gradient(45deg, #0074d9, #00d9ff);
+          border: none;
+          padding: 12px 15px;
+          font-size: 16px;
+          border-radius: 10px;
+          color: #ffffff;
+          cursor: pointer;
+          transition: background 0.3s ease, transform 0.3s ease;
+          box-shadow: 0 0 15px rgba(0,217,255,0.4);
+        }
+        
+        .form button:hover {
+          background: linear-gradient(45deg, #00d9ff, #0074d9);
+          transform: scale(1.05);
+        }
+        
+        .form a {
+          text-align: center;
+          margin-top: 10px;
+          color: #00d9ff;
+          text-decoration: none;
+          font-size: 14px;
+          transition: color 0.3s ease;
+        }
+        
+        .form a:hover {
+          color: #ff00ff;
+        }
+        
+        /* Personalização do dropdown removendo o estilo padrão */
+        select {
+          appearance: none;
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23ffffff' d='M0 0l4 4-4 4z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 10px center;
+          background-size: 10px;
+        }
+        
+        /* Estilo para mensagens de erro ou informações */
+        #auth-message {
+          max-width: 100%;
+          margin-bottom: 15px;
+          color: #ff4d4d;
+          font-size: 14px;
+          line-height: 1.5;
+          text-align: center;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          word-break: break-word;
+        }
+        
+        /* Estilo global para seleção de texto – melhora a legibilidade */
+        ::selection {
+          background-color: #00d9ff;
+          color: #000;
+        }
+        
+        /* MEDIA QUERIES PARA RESPONSIVIDADE */
+        @media (max-width: 991px) {
+          .container {
+            width: 95%;
+          }
+        }
+        
+        @media (max-width: 767px) {
+          .futuristic-login-section {
+            padding-top: 80px;
+            min-height: calc(100vh - 80px);
+          }
+          .container {
+            flex-direction: column;
+            height: auto;
+          }
+          .left-section, 
+          .right-section {
+            width: 100%;
+          }
+          .left-section {
+            height: 200px;
+          }
+          .right-section {
+            padding: 20px;
+          }
+          .form-section h2 {
+            font-size: 24px;
+          }
+          .form {
+            max-width: 100%;
+          }
+        }
+      </style>
+      
+      <!-- Script para alternar entre login e cadastro sem alterar a funcionalidade -->
+      <script>
+        document.getElementById("create-account").addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(".form-section h2").textContent = "Registre-se";
+          document.getElementById("login-form").innerHTML = `
+            <select name="user-type" id="user-type">
+              <option value="resident">Residente</option>
+              <option value="tutor">Tutor</option>
+            </select>
+            <input type="text" placeholder="Nome Completo" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Criar Conta</button>
+            <a href="#" id="back-to-login">Já tem uma conta? Faça login aqui</a>
+          `;
+          document.getElementById("back-to-login").addEventListener("click", function (e) {
+            e.preventDefault();
+            location.reload();
+          });
+        });
+      </script>
+      
+      <div class="snackbars" id="form-output-global"></div>
+      <script src="js/config.js"></script>
+      <script src="js/typography.js"></script>
+      <script src="js/core.min.js"></script>
+      <script src="js/script.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+      <script>
+        // Scripts adicionais, se necessário
+      </script>
+  </body>
+</html>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#06b6d4">
+
+<!-- para iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">

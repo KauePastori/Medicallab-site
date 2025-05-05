@@ -1,0 +1,81 @@
+/* Estilos para o IE Panel */
+.ie-panel {
+    display: none;
+    background: #212121;
+    padding: 10px 0;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+    clear: both;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  html.ie-10 .ie-panel,
+  html.lt-ie-10 .ie-panel {
+    display: block;
+  }
+  
+  /* Estilo para a seção com espaçamento grande */
+  .section-lg {
+    padding: 50px 0;
+  }
+  
+  /* Estilos para a mensagem de erro de autenticação */
+  #auth-message {
+    max-width: 100%;
+    margin-bottom: 15px;
+    color: #ff4d4d;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+  
+  /* Estilos para o dropdown utilizado no formulário */
+  select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    appearance: none;
+    position: relative;
+    z-index: 1;
+  }
+  select:hover {
+    border-color: #00d9ff;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  select:focus {
+    border-color: transparent;
+    animation: neon-border 0.9s linear infinite alternate;
+    background: linear-gradient(90deg, #3b5998, #6a89cc, #3b5998);
+    color: white;
+    outline: none;
+    box-shadow: 0 0 10px rgba(59, 89, 152, 0.8);
+  }
+  select option {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px;
+  }
+  @keyframes neon-border {
+    0% {
+      box-shadow: 0 0 10px rgba(59, 89, 152, 0.5), 0 0 20px rgba(106, 137, 204, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 15px rgba(59, 89, 152, 0.7), 0 0 30px rgba(106, 137, 204, 0.9);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(59, 89, 152, 0.9), 0 0 40px rgba(106, 137, 204, 1);
+    }
+  }
+  
+  /* (Adicione outros estilos específicos conforme necessário) */
+  

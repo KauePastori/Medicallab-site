@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados do Residente</title>
+  <!-- Ícones do Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Arquivo CSS específico para esta página -->
+  <link rel="stylesheet" href="css/resident.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-buttons">
+      <button id="back-button" class="back-button" onclick="goBack()" style="display: none;">Voltar</button>
+      <button class="logout-btn" onclick="logout()">LOGOUT</button>
+    </div>
+    <h1>Resultados do <span>Residente</span></h1>
+    <p>Acompanhe o desempenho com precisão</p>
+  </header>
+  
+
+  <!-- Mensagem de boas-vindas -->
+  <div id="greeting" class="greeting" style="text-align: center; font-size: 1.5rem; margin: 20px 0;"></div>
+
+  <!-- Loading Overlay para Logout -->
+  <div id="logout-overlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Saindo...</p>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <!-- Formulário de Seleção para Avaliação -->
+    <div class="evaluation-form" id="evaluation-options">
+      <h3>Selecione o Módulo e a Data da Atividade</h3>
+      <label for="training-module">Módulo de Treinamento:</label>
+      <select id="training-module">
+        <option value="">Selecione o módulo</option>
+        <option value="Módulo 1">Módulo 1</option>
+        <option value="Módulo 2">Módulo 2</option>
+        <option value="Módulo 3">Módulo 3</option>
+      </select>
+      <label for="activity-date-select">Data da Atividade:</label>
+      <select id="activity-date-select">
+        <option value="">Selecione a data</option>
+        <option value="2024-01-15">15/01/2024</option>
+        <option value="2024-02-20">20/02/2024</option>
+        <option value="2024-03-10">10/03/2024</option>
+      </select>
+      <button onclick="evaluateActivity()">Visualizar Resultados</button>
+      <p id="evaluation-error" style="color: red; display: none;"></p>
+    </div>
+
+    <!-- Área de Resultados (inicialmente oculta) -->
+    <div id="results">
+      <div class="activity-date" id="activity-date">
+        <!-- Será atualizado com o módulo e a data selecionados -->
+      </div>
+      <div class="info-box">
+        <div>
+          <h4>Precisão</h4>
+          <p id="precision-value">--%</p>
+        </div>
+        <div>
+          <h4>Tempo Total</h4>
+          <p id="time-value">--s</p>
+        </div>
+        <div>
+          <h4>Erros</h4>
+          <p id="error-value">--</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Visualização de Dados</h3>
+        <div class="chart-row">
+          <div class="chart-container">
+            <canvas id="precisionChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="timeChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="errorChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>
+          Feedback do Tutor 
+          <button id="refresh-feedback" onclick="refreshFeedback()" title="Atualizar Feedback">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </h2>
+        <!-- Container onde os feedbacks serão carregados -->
+        <div id="feedback-container"></div>
+      </div>
+    </div>
+  </div>
+
+<!-- Ações de Certificado (inicialmente ocultas) -->
+<div id="certificate-actions" style="display: none; text-align:center; margin-top: 2rem;">
+  <button id="download-certificate" class="btn btn-primary">
+    <i class="fas fa-download"></i> Baixar Certificado
+  </button>
+  <button id="share-linkedin" class="btn btn-secondary">
+    <i class="fab fa-linkedin"></i> Compartilhar no LinkedIn
+  </button>
+</div>
+
+  <!-- Mensagem caso não haja certificado disponível -->
+  <p id="certificate-message" style="display: none; color: #cbd5e1; font-style: italic; margin-top: 1rem;">
+    Nenhum certificado disponível para este módulo e data.
+  </p>
+
+  
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 MedicalLab. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Arquivo JavaScript específico para esta página -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../config.js"></script>
+  <script src="js/resident.js"></script>
+</body>
+</html>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#06b6d4">
+
+<!-- para iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">

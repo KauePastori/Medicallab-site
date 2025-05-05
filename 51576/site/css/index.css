@@ -1,0 +1,126 @@
+/* css/index.css */
+
+/* Estilos para o painel de IE */
+.ie-panel {
+    display: none;
+    background: #212121;
+    padding: 10px 0;
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+    clear: both;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  html.ie-10 .ie-panel,
+  html.lt-ie-10 .ie-panel {
+    display: block;
+  }
+  
+  /* Botão de chamada para ação (CTA) na Journey Section */
+  .cta-button {
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    background: linear-gradient(145deg, #70d4ff, #007bff);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.5);
+    transition: transform 0.3s ease;
+  }
+  .cta-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Estilos específicos para a Journey Section */
+  .journey-section h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #70d4ff;
+    text-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
+  }
+  .journey-section p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #d1d1d1;
+  }
+  
+  /* Estilos para o Footer */
+  footer.section.footer-classic {
+    background: linear-gradient(to right, #1a2a3a, #243b55);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+  footer.section.footer-classic .footer-inner-1 {
+    padding-bottom: 30px;
+  }
+  footer.section.footer-classic .footer-inner-1 h5 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  footer.section.footer-classic .footer-inner-2 p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  footer.section.footer-classic .footer-inner-2 p + p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+  }
+  footer.section.footer-classic .link-image img {
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  /* Linha separadora no Footer */
+  .separator {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 30px 0;
+  }
+  
+  /* Efeito hover para imagens dos parceiros */
+  .link-image:hover img {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+  
+  /* Estilos para o decorativo do Footer */
+  footer.section.footer-classic::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(80px);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite alternate;
+  }
+  footer.section.footer-classic::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(80px);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite alternate-reverse;
+  }
+  
+  @keyframes float {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(20px, 20px);
+    }
+  }
+  

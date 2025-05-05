@@ -1,0 +1,161 @@
+/* css/animations.css */
+
+/* Animações básicas */
+@keyframes move1 {
+    from {
+      transform: translateY(0) translateX(0);
+    }
+    to {
+      transform: translateY(20px) translateX(20px);
+    }
+  }
+  @keyframes move2 {
+    from {
+      transform: translateY(0) translateX(0);
+    }
+    to {
+      transform: translateY(-20px) translateX(-20px);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Animações orgânicas para "Image Right with Blue Background" */
+  @keyframes organicMoveRightToLeft {
+    0% {
+      transform: translate(40px, 40px) scale(1);
+    }
+    100% {
+      transform: translate(-20px, -20px) scale(1.2);
+    }
+  }
+  @keyframes organicMoveLeftToRight {
+    0% {
+      transform: translate(-40px, -40px) scale(1);
+    }
+    100% {
+      transform: translate(20px, 20px) scale(1.1);
+    }
+  }
+  
+  /* Animações orgânicas para "Image Centered with Text to the Right" */
+  @keyframes organicMove1 {
+    0% {
+      transform: translate(-20px, -20px) scale(1);
+    }
+    100% {
+      transform: translate(40px, 40px) scale(1.2);
+    }
+  }
+  @keyframes organicMove2 {
+    0% {
+      transform: translate(20px, 20px) scale(1);
+    }
+    100% {
+      transform: translate(-40px, -40px) scale(1.1);
+    }
+  }
+  
+  /* Animações orgânicas para "Our Principles" */
+  @keyframes organicMoveLeft {
+    0% {
+      transform: translate(-40px, -40px) scale(1);
+    }
+    100% {
+      transform: translate(20px, 20px) scale(1.2);
+    }
+  }
+  @keyframes organicMoveRight {
+    0% {
+      transform: translate(40px, 40px) scale(1);
+    }
+    100% {
+      transform: translate(-20px, -20px) scale(1.1);
+    }
+  }
+  
+  /* Animações de fade para "Our Principles" e "Our Team" */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+  /* css/animations.css */
+
+/* Animações básicas */
+@keyframes move1 {
+    from { transform: translateY(0) translateX(0); }
+    to { transform: translateY(20px) translateX(20px); }
+  }
+  @keyframes move2 {
+    from { transform: translateY(0) translateX(0); }
+    to { transform: translateY(-20px) translateX(-20px); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Outras animações orgânicas (exemplos) */
+  @keyframes organicMoveRightToLeft {
+    0% { transform: translate(40px, 40px) scale(1); }
+    100% { transform: translate(-20px, -20px) scale(1.2); }
+  }
+  @keyframes organicMoveLeftToRight {
+    0% { transform: translate(-40px, -40px) scale(1); }
+    100% { transform: translate(20px, 20px) scale(1.1); }
+  }
+  

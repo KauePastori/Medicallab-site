@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Tutor</title>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Arquivo CSS específico para o Tutor -->
+  <link rel="stylesheet" href="css/tutor.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <!-- Botão Voltar (inicialmente oculto) -->
+    <button id="back-button" onclick="goBack()">Voltar</button>
+    <h1>Painel do <span>Tutor</span></h1>
+    <p>Selecione um residente para visualizar os dados</p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <!-- Overlay de Logout -->
+  <div class="loading-overlay" id="logout-overlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Saindo...</p>
+  </div>
+
+  <!-- Overlay de Carregamento -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Carregando dados...</p>
+  </div>
+
+  <div class="container">
+    <!-- Campo de Busca -->
+    <div class="search-container" id="search-container">
+      <input type="text" id="resident-search" placeholder="Pesquisar residente..." />
+      <button onclick="searchResident()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--text-color)" viewBox="0 0 24 24">
+          <path d="M10,18A8,8,0,1,1,18,10,8.009,8.009,0,0,1,10,18Zm0-14A6,6,0,1,0,16,10,6.007,6.007,0,0,0,10,4Z"/>
+          <path d="M21,21l-4.35-4.35"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Seletor de Residentes (gerado dinamicamente em ordem alfabética) -->
+    <div class="selector" id="resident-selector"></div>
+
+    <!-- Seção para seleção do módulo e data da atividade -->
+    <div class="evaluation-form" id="evaluation-options">
+      <h3>Selecione o Módulo e a Data da Atividade</h3>
+      <label for="training-module">Módulo de Treinamento:</label>
+      <select id="training-module">
+        <option value="">Selecione o módulo</option>
+        <option value="Módulo 1">Módulo 1</option>
+        <option value="Módulo 2">Módulo 2</option>
+        <option value="Módulo 3">Módulo 3</option>
+      </select>
+      <label for="activity-date-select">Data da Atividade:</label>
+      <select id="activity-date-select">
+        <option value="">Selecione a data</option>
+        <option value="2024-01-15">15/01/2024</option>
+        <option value="2024-02-20">20/02/2024</option>
+        <option value="2024-03-10">10/03/2024</option>
+      </select>
+      <button onclick="evaluateActivity()">Avaliar</button>
+      <p id="evaluation-error"></p>
+    </div>
+
+    <div class="container">
+      <!-- Resumo (será atualizado após avaliação) -->
+      <div class="activity-date" id="activity-date"></div>
+      <div class="summary-row" id="summary-row">
+        <div class="summary-box">
+          <h4>Precisão Média</h4>
+          <p id="summary-precision">-</p>
+        </div>
+        <div class="summary-box">
+          <h4>Tempo Utilizado</h4>
+          <p id="summary-time">-</p>
+        </div>
+        <div class="summary-box">
+          <h4>Quantidade de Erros</h4>
+          <p id="summary-errors">-</p>
+        </div>
+      </div>
+      <!-- Gráficos -->
+      <div class="chart-row">
+        <div class="chart-container">
+          <canvas id="chartPrecisao"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartTempo"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartErros"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulário de Feedback (inicialmente oculto e exibido somente após avaliação) -->
+    <div class="feedback-form" id="feedback-form-container">
+      <h3>Enviar Feedback</h3>
+      <label for="final-evaluation">Avaliação Final:</label>
+      <select id="final-evaluation">
+        <option value="">Selecione a avaliação</option>
+        <option value="Falhou">Falhou</option>
+        <option value="Ruim">Ruim</option>
+        <option value="Mediano">Mediano</option>
+        <option value="Bom">Bom</option>
+        <option value="Excelente">Excelente</option>
+      </select>
+      <textarea id="feedback" placeholder="Digite seu feedback aqui..."></textarea>
+      <p id="feedback-error"></p>
+      <button onclick="saveFeedback()">Salvar Feedback</button>
+      <!-- Botão para visualizar os feedbacks enviados -->
+      <button onclick="toggleFeedbackList()">Visualizar Feedbacks Enviados</button>
+      <div id="feedback-status"></div>
+    </div>
+
+    <!-- Seção de Listagem dos Feedbacks Enviados (inicialmente oculta) -->
+    <div class="feedback-form" id="feedback-list-container">
+      <h3>Feedbacks Enviados</h3>
+      <div id="feedback-list-content"></div>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmação para Exclusão -->
+  <div id="delete-confirmation-modal">
+    <div class="modal-content">
+      <p>Tem certeza que deseja excluir este feedback?</p>
+      <div style="margin-top: 20px;">
+        <button id="confirm-delete-btn">Confirmar</button>
+        <button id="cancel-delete-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 MedicalLab. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Arquivo JavaScript específico para o Tutor -->
+  <script src="../config.js"></script>
+  <script src="js/tutor.js"></script>
+</body>
+</html>
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#06b6d4">
+
+<!-- para iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">

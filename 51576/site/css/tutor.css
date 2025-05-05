@@ -1,0 +1,689 @@
+/* ============================= */
+/* VARIÁVEIS DE COR & FONTES      */
+/* ============================= */
+:root {
+    --bg-dark: #0f172a;
+    --bg-mid: #1f2937;
+    --bg-light: #334155;
+    --neon: #06b6d4;
+    --neon-alt: #3b82f6;
+    --error-color: #ef476f;
+    --text-color: #f8f9fa;
+    --subtext-color: #cbd5e1;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* ============================= */
+  /* RESET & ESTILOS GLOBAIS       */
+  /* ============================= */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--bg-mid), var(--bg-dark));
+    color: var(--text-color);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* ============================= */
+  /* HEADER – PADRÃO, COM TOQUE NEON */
+  /* ============================= */
+  header {
+    position: relative;
+    background: var(--bg-mid);
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  }
+  header h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  header h1 span {
+    color: var(--neon);
+  }
+  header p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+    color: var(--subtext-color);
+  }
+  /* Botões do Header (Voltar e Logout) */
+  #back-button,
+  header .logout-btn {
+    position: absolute;
+    top: 35%;
+    background: linear-gradient(to right, var(--neon), var(--neon-alt));
+    color: var(--text-color);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  #back-button {
+    left: 20px;
+    display: none;
+  }
+  header .logout-btn {
+    right: 20px;
+  }
+  #back-button:hover,
+  header .logout-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right, var(--neon-alt), var(--neon));
+  }
+  /* Responsividade */
+  @media (max-width: 1024px) {
+    #back-button, header .logout-btn {
+      top: auto;
+      bottom: 20px;
+      font-size: 0.95rem;
+      padding: 8px 20px;
+    }
+    header {
+      padding-bottom: 80px;
+    }
+  }
+  @media (max-width: 768px) {
+    #back-button, header .logout-btn {
+      bottom: 15px;
+      font-size: 0.85rem;
+      padding: 7px 18px;
+      border-radius: 25px;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 0.9rem;
+    }
+  }
+  @media (max-width: 480px) {
+    #back-button, header .logout-btn {
+      position: relative;
+      margin: 15% auto 0;
+      width: 60%;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 10px;
+    }
+    header {
+      padding-bottom: 140px;
+    }
+  }
+  
+  /* ============================= */
+  /* OVERLAYS (Logout & Loading)   */
+  /* ============================= */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+  .loading-overlay.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  .loading-spinner {
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid var(--neon);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loading-text {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* ============================= */
+  /* CONTAINER PRINCIPAL           */
+  /* ============================= */
+  .container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    animation: fadeInPage 0.8s ease-out;
+  }
+  @keyframes fadeInPage {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* ============================= */
+  /* CAMPO DE BUSCA E SELEÇÃO      */
+  /* ============================= */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  .search-container input {
+    width: 300px;
+    padding: 12px 15px;
+    border: 2px solid var(--neon);
+    border-radius: 10px;
+    background: var(--bg-mid);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border 0.3s ease;
+  }
+  .search-container input::placeholder {
+    color: var(--subtext-color);
+  }
+  .search-container input:focus {
+    border-color: var(--neon-alt);
+    outline: none;
+  }
+  .search-container button {
+    background: linear-gradient(to right, var(--neon), var(--neon-alt));
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .search-container button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* ============================= */
+  /* CARDS DOS RESIDENTES          */
+  /* ============================= */
+  .selector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .resident-card {
+    background: linear-gradient(145deg, var(--neon), var(--neon-alt));
+    border-radius: 15px;
+    padding: 15px;
+    width: 220px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .resident-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+  }
+  .resident-card.selected {
+    background: linear-gradient(145deg, #045d8c, #033f5b);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9);
+  }
+  .resident-card h4 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  .resident-card p {
+    font-size: 0.85rem;
+    color: var(--subtext-color);
+    margin: 5px 0 0;
+  }
+  
+  /* ============================= */
+  /* FORMULÁRIO DE AVALIAÇÃO       */
+  /* ============================= */
+  .evaluation-form {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 25px 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: slideFadeIn 0.8s ease-out;
+  }
+  @keyframes slideFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .evaluation-form h3 {
+    color: var(--neon);
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  .evaluation-form label {
+    font-size: 1rem;
+    color: var(--text-color);
+    align-self: flex-start;
+  }
+  .evaluation-form select {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 2px solid var(--neon);
+    border-radius: 10px;
+    background: var(--bg-mid);
+    color: var(--text-color);
+    font-size: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease;
+  }
+  .evaluation-form select:focus {
+    border-color: var(--neon-alt);
+    outline: none;
+  }
+  .evaluation-form button {
+    background: linear-gradient(to right, var(--neon), var(--neon-alt));
+    color: var(--text-color);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  .evaluation-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to right, var(--neon-alt), var(--neon));
+  }
+  .evaluation-form p {
+    color: var(--error-color);
+    font-weight: bold;
+    display: none;
+    margin: 0;
+  }
+  
+  /* ============================= */
+  /* RESUMO & GRÁFICOS             */
+  /* ============================= */
+  .activity-date {
+    display: none;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--neon);
+    background: linear-gradient(135deg, var(--bg-mid), var(--bg-light));
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: fadeIn 0.8s ease;
+  }
+  .activity-date strong {
+    color: var(--neon-alt);
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .summary-row {
+    display: none;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .summary-box {
+    background: linear-gradient(145deg, var(--bg-mid), var(--bg-light));
+    border-radius: 15px;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .summary-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  }
+  .summary-box h4 {
+    color: var(--neon);
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .summary-box p {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  .chart-row {
+    display: none;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .chart-container {
+    flex: 1;
+    max-width: 500px;
+    background: linear-gradient(145deg, var(--bg-mid), var(--bg-light));
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .chart-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* ============================= */
+  /* FORMULÁRIO & LISTA DE FEEDBACK */
+  /* ============================= */
+  #feedback-form-container,
+  #feedback-list-container {
+    display: none;
+  }
+  .feedback-form {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 30px;
+    background: var(--bg-mid);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideFadeIn 0.8s ease-out;
+  }
+  @keyframes slideFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .feedback-form h3 {
+    color: var(--neon);
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  .feedback-form select,
+  .feedback-form textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 2px solid var(--neon);
+    border-radius: 10px;
+    background: var(--bg-mid);
+    color: var(--text-color);
+    font-size: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease;
+  }
+  .feedback-form select:focus,
+  .feedback-form textarea:focus {
+    border-color: var(--neon-alt);
+    outline: none;
+  }
+  .feedback-form textarea {
+    height: 150px;
+    resize: none;
+  }
+  .feedback-form button {
+    background: linear-gradient(to right, var(--neon), var(--neon-alt));
+    color: var(--text-color);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  .feedback-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to right, var(--neon-alt), var(--neon));
+  }
+  /* Botão para visualizar feedbacks enviados */
+  .feedback-form button:nth-of-type(2) {
+    background: transparent;
+    border: 2px solid var(--neon);
+    margin-top: 10px;
+  }
+  /* Lista de feedbacks enviados */
+  #feedback-list-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--bg-mid);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  .feedback-item {
+    width: 100%;
+    max-width: 600px;
+    background: var(--bg-dark);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    overflow-wrap: break-word;
+  }
+  .feedback-item:hover {
+    transform: translateX(5px);
+  }
+  
+  /* Edição Inline (mesma estética) */
+  .edit-select,
+  .edit-textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 2px solid var(--neon);
+    border-radius: 10px;
+    background: var(--bg-mid);
+    color: var(--text-color);
+    font-size: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+  }
+  .edit-textarea {
+    height: 150px;
+    resize: none;
+  }
+  
+  /* ============================= */
+  /* MODAL DE CONFIRMAÇÃO          */
+  /* ============================= */
+  #delete-confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+  #delete-confirmation-modal .modal-content {
+    background: var(--bg-mid);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 80%;
+    animation: popIn 0.6s ease-out;
+  }
+  @keyframes popIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  #delete-confirmation-modal p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0 0 20px;
+  }
+  #delete-confirmation-modal button {
+    background: linear-gradient(to right, var(--neon), var(--neon-alt));
+    color: var(--text-color);
+    border: none;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 5px;
+  }
+  #delete-confirmation-modal button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* ============================= */
+  /* FOOTER                        */
+  /* ============================= */
+  footer {
+    text-align: center;
+    padding: 20px;
+    
+    color: var(--subtext-color);
+    border-radius: 15px 15px 0 0;
+    margin-top: 40px;
+    animation: fadeInFooter 1s ease-out;
+  }
+  @keyframes fadeInFooter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+
+  /* card dos residentes na horizontal e com o carrossel */
+ /* Container com rolagem horizontal (carousel) */
+.selector {
+    display: flex;
+    flex-wrap: nowrap;              /* Mantém os itens em uma única linha */
+    gap: 20px;
+    margin-bottom: 30px;
+    overflow-x: auto;               /* Habilita a rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* Rolagem suave em iOS */
+    scroll-behavior: smooth;        /* Transição suave ao rolar */
+    padding-bottom: 10px;           /* Espaço extra para visualização do scrollbar */
+    
+    /* Efeito de scroll snap para alinhamento */
+    scroll-snap-type: x mandatory;
+  }
+  
+  /* Cada card não deve ser flex-shrunk e terá tamanho fixo ou mínimo */
+  .resident-card {
+    flex: 0 0 auto;                /* Impede que o card seja encolhido */
+    width: 220px;                  /* Ajuste para o tamanho desejado */
+    scroll-snap-align: start;      /* Alinha cada card ao início da rolagem */
+    /* Outros estilos já definidos para o card (sombra, borda, etc.) devem estar aqui */
+    /* Exemplo adicional: */
+    background: linear-gradient(145deg, #06b6d4, #3b82f6);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Personalização do scrollbar */
+  .selector::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .selector::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  
+  .selector::-webkit-scrollbar-thumb {
+    background: rgba(6, 182, 212, 0.6);
+    border-radius: 10px;
+  }
+  
+  .selector::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 182, 212, 0.8);
+  }
+  
+  
